@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="pageTitle">Mohamad Bashar - Portfolio</title>
+
+    <!-- Favicon (Optional) -->
+    <!-- <link rel="icon" href="/favicon.ico" /> -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+<body class="dark-theme"> <!-- Default to dark theme -->
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MB.</div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link active" data-translate="navHome">Home</a></li>
+                <li><a href="#about" class="nav-link" data-translate="navAbout">About</a></li>
+                <li><a href="#skills" class="nav-link" data-translate="navSkills">Skills</a></li>
+                <li><a href="#work" class="nav-link" data-translate="navWork">Work</a></li>
+                <li><a href="#experience" class="nav-link" data-translate="navExperience">Experience</a></li>
+                <li><a href="#contact" class="nav-link" data-translate="navContact">Contact</a></li>
+            </ul>
+            <div class="controls">
+                <button id="theme-toggle-btn" class="icon-button" title="Toggle Theme">
+                    <i data-lucide="sun"></i> <!-- Default icon, JS will update -->
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="section hero">
+            <div class="hero-content">
+                <h1 id="hero-main-title" data-translate="heroName"><span class="highlight-name">Mohamad Bashar</span> - Student & Aspiring Developer</h1>
+                <p id="hero-headline" data-translate="heroHeadline">Passionate high school student diving deep into the world of programming, especially Python and TensorFlow. Driven by a love for learning and academic challenges in Math, Physics, and Chemistry. Eager to build, contribute, and grow within the tech community.</p>
+                <p class="hero-subheadline" data-translate="heroAcademicPassion">My academic curiosity fuels my technical drive, creating a unique blend of analytical thinking and creative problem-solving.</p> <!-- Added new line -->
+                <!-- Add social links or CTA button if desired -->
+            </div>
+            <div class="hero-image-container">
+                <img src="images/profile_presenting.jpeg" alt="Mohamad Bashar presenting" class="hero-image">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 data-translate="aboutTitle">About Me</h2>
+            <div class="about-content">
+                <div class="about-image-container">
+                    <img src="images/profile_robot.jpeg" alt="Mohamad Bashar with robot project" class="about-image">
+                </div>
+                <div class="about-text">
+                    <p data-translate="aboutPara1">Hi there! I'm Mohamad, a 17-year-old high school student with a strong foundation in Math, Physics, and Chemistry, and an even stronger passion for coding. My journey into technology started with Python, and I quickly fell in love with its power and versatility.</p>
+                    <p data-translate="aboutPara2">Currently, I'm focusing on deepening my expertise in TensorFlow and exploring the vast possibilities of machine learning. I'm always eager to tackle new challenges, learn new technologies, and collaborate on exciting projects. I believe in hard work and continuous learning to become a top-notch developer and make meaningful contributions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 data-translate="skillsTitle">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i data-lucide="code"></i>
+                    <h3 data-translate="skillsLangTitle">Programming Languages</h3>
+                    <ul>
+                        <li data-translate="skillsLangPy">Python (Expert)</li>
+                        <li data-translate="skillsLangJs">JavaScript (Novice)</li>
+                        <li data-translate="">HTML5 (Expert)</li>
+                        <li data-translate="">CSS3 (Expert)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i data-lucide="brain-circuit"></i>
+                    <h3 data-translate="skillsFrameworkTitle">Frameworks & Libraries</h3>
+                    <ul>
+                        <li data-translate="skillsFrameworkTf">TensorFlow (Intermediate)</li>
+                        <li data-translate="">Open-AI (Expert)</li>
+                        <li data-translate="">React (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i data-lucide="terminal-square"></i>
+                    <h3 data-translate="skillsToolsTitle">Tools & Platforms</h3>
+                    <ul>
+                        <li data-translate="">Arduino</li>
+                        <li data-translate="">APIfy</li>
+                        <li data-translate="skillsToolsGit">Git & GitHub</li>
+                        <li data-translate="skillsToolsVs">VS Code</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i data-lucide="graduation-cap"></i>
+                    <h3 data-translate="skillsAcademicTitle">Academic Strengths</h3>
+                    <ul>
+                        <li data-translate="skillsAcademicMath">Mathematics</li>
+                        <li data-translate="skillsAcademicPhys">Physics</li>
+                        <li data-translate="skillsAcademicChem">Chemistry</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Work Section -->
+        <section id="work" class="section">
+            <h2 data-translate="workTitle">My Work</h2>
+            <div class="projects-grid">
+                <!-- SAAED Robot Project Card -->
+                <div class="project-card">
+                    <img src="images/SRS_robot.png" alt="SAAED Robot Project">
+                    <div class="project-info">
+                        <h3 data-translate="workRobotTitle">SAAED Robot(part of a team)</h3>
+                        <p data-translate="workRobotDesc">A disaster response robot designed to explore affected areas, locate stranded individuals, and gather environmental data (temperature, gases, flame intensity) to aid rescuers. Part of a team project.</p>
+                        <p class="skills-used" data-translate="workRobotSkills">Skills: Robotics, Sensors, Microcontrollers</p>
+                        <div class="project-links">
+                            <a href="https://saaed-robot-support.github.io/SRS_Site/" target="_blank" rel="noopener noreferrer" class="project-link" data-translate="workRobotInfoLink">More Info <i data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- LifeLine Project Card (Placeholder) -->
+                <div class="project-card">
+                    <img src="images/placeholder.png" alt="LifeLine Project Placeholder">
+                    <div class="project-info">
+                        <h3 data-translate="workLifeLineTitle">LifeLine (team captin)</h3>
+                        <p data-translate="workLifeLineDesc">A React & Firebase application designed to register and track individuals after a disaster, connecting people by consolidating data from users and hospitals with live location tracking.</p>
+                        <p class="skills-used" data-translate="workLifeLineSkills">Skills: React, Firebase, JavaScript</p>
+                        <div class="project-links">
+                            <!-- Links will be added later -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Vector Visualizer Project Card -->
+                <div class="project-card">
+                    <img src="images/vector_vis.png" alt="Vector Visualizer Screenshot">
+                    <div class="project-info">
+                        <h3 data-translate="workVectorTitle">Vector Visualizer</h3>
+                        <p data-translate="workVectorDesc">An interactive app built with Python and Streamlit to help students visualize physics vectors. Graph vectors with different colors and sizes. A contribution to my school, created in Grade 9 (2022).</p>
+                        <p class="skills-used" data-translate="workVectorSkills">Skills: Python, Streamlit</p>
+                        <div class="project-links">
+                            <a href="https://vector-visualizer.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link" data-translate="workVectorLiveLink">View Live App <i data-lucide="external-link"></i></a>
+                            <a href="https://github.com/mohamad-bashar/vector-visualizer" target="_blank" rel="noopener noreferrer" class="project-link" data-translate="workVectorGithubLink">View on GitHub <i data-lucide="github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Irregular Verbs Test Project Card -->
+                <div class="project-card">
+                    <img src="images/irregular_test.png" alt="Irregular Verbs Test Screenshot">
+                    <div class="project-info">
+                        <h3 data-translate="workVerbsTitle">Irregular Verbs Quiz</h3>
+                        <p data-translate="workVerbsDesc">An interactive and fun quiz app built with Python and Streamlit to help users practice English irregular verbs. Includes scoring and feedback.</p>
+                        <p class="skills-used" data-translate="workVerbsSkills">Skills: Python, Streamlit</p>
+                        <div class="project-links">
+                            <a href="https://irregular-verbs.streamlit.app" target="_blank" rel="noopener noreferrer" class="project-link" data-translate="workVerbsLiveLink">Try the Quiz <i data-lucide="external-link"></i></a>
+                            <a href="https://github.com/mohamad-bashar/irregular_verb_test_streamlit" target="_blank" rel="noopener noreferrer" class="project-link" data-translate="workVerbsGithubLink">View on GitHub <i data-lucide="github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more project cards here -->
+            </div>
+        </section>
+        <!-- Experience & Certifications Section -->
+        <section id="experience" class="section">
+            <h2 data-translate="experienceTitle">Experience & Certifications</h2>
+            <div class="experience-timeline">
+                <!-- IELTS -->
+                <div class="experience-item">
+                    <div class="experience-icon"><i data-lucide="award"></i></div>
+                    <div class="experience-content">
+                        <h3 data-translate="expIeltsTitle">IELTS Academic</h3>
+                        <p data-translate="expIeltsDesc">Achieved an overall band score of 7.0 (CEFR Level C1), demonstrating proficient English language skills for academic and professional environments. (April 2025)</p>
+                    </div>
+                </div>
+                <!-- TensorFlow -->
+                <div class="experience-item">
+                    <div class="experience-icon"><i data-lucide="brain"></i></div>
+                    <div class="experience-content">
+                        <h3 data-translate="expTfTitle">Udemy: TensorFlow for Deep Learning Bootcamp</h3>
+                        <p data-translate="expTfDesc">Completed a comprehensive 63-hour bootcamp covering TensorFlow fundamentals and applications in deep learning. (May 2025)</p>
+                    </div>
+                </div>
+                <!-- Python Mega Course -->
+                <div class="experience-item">
+                    <div class="experience-icon"><i data-lucide="code-2"></i></div>
+                    <div class="experience-content">
+                        <h3 data-translate="expPyTitle">Udemy: Python Mega Course: Learn Python in 60 Days, Build 20 Apps</h3>
+                        <p data-translate="expPyDesc">Finished a 52-hour intensive course focused on Python programming, including building multiple real-world applications. (July 2023)</p>
+                    </div>
+                </div>
+                <!-- RIT Competition -->
+                <div class="experience-item">
+                    <div class="experience-icon"><i data-lucide="swords"></i></div>
+                    <div class="experience-content">
+                        <h3 data-translate="expRitTitle">RIT Dubai: 14th Annual Engineering Competition</h3>
+                        <p data-translate="expRitDesc">Participated in the Software Engineering track of the competition, gaining valuable experience in competitive programming and teamwork. (November 2024)</p>
+                    </div>
+                </div>
+                <!-- School Radio Award -->
+                <div class="experience-item">
+                    <div class="experience-icon"><i data-lucide="radio"></i></div>
+                    <div class="experience-content">
+                        <h3 data-translate="expRadioTitle">School Award: 1st Place - Radio Program Contribution</h3>
+                        <p data-translate="expRadioDesc">Recognized for outstanding technical and creative contributions to the school's radio program during the first semester.</p>
+                    </div>
+                </div>
+                <!-- School Academic Award -->
+                <div class="experience-item">
+                    <div class="experience-icon"><i data-lucide="star"></i></div>
+                    <div class="experience-content">
+                        <h3 data-translate="expAcademicTitle">School Award: Academic Excellence (3rd Center)</h3>
+                        <p data-translate="expAcademicDesc">Achieved 3rd position in academic ranking for the 11th grade (Branch 4) during the first semester of the 2023-2024 academic year.</p>
+                    </div>
+                </div>
+                <!-- UCMAS Certificate -->
+                <div class="experience-item">
+                    <div class="experience-icon"><i data-lucide="calculator"></i></div> <!-- Changed icon -->
+                    <div class="experience-content">
+                        <h3 data-translate="expUcmasTitle">UCMAS National Competition - 2nd Runner Up</h3>
+                        <p data-translate="expUcmasDesc">Achieved Second Runner Up in the 14th National Abacus & Mental Arithmetic and Listening Skill Competition (Elementary B / C3 Category) held in Dubai, UAE. (May 2017)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gratitude Section -->
+        <section id="gratitude" class="section">
+            <h2 data-translate="gratitudeTitle">Gratitude</h2>
+            <p data-translate="gratitudeText">I wouldn't be where I am today without the unwavering support and sacrifices of my family, especially my parents who fueled my passion and always believed in me. A special thanks also goes to my two brothers, my friends, and my teachers for their constant encouragement and guidance. Thank you all!</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 data-translate="contactTitle">Get In Touch</h2>
+            <p data-translate="contactSubtext">Interested in collaborating or have any questions? Feel free to reach out!</p>
+            <div class="contact-links">
+                <a href="mailto:mohamadbashar07@gmail.com" class="contact-link" data-translate="contactEmailLink">
+                    <i data-lucide="mail"></i> mohamadbashar07@gmail.com
+                </a>
+                <a href="https://github.com/mohamad-bashar" target="_blank" rel="noopener noreferrer" class="contact-link" data-translate="contactGithubLink">
+                    <i data-lucide="github"></i> GitHub Profile
+                </a>
+                <a href="https://www.linkedin.com/in/mohammad-bashar-b9a372362/" target="_blank" rel="noopener noreferrer" class="contact-link" data-translate="contactLinkedinLink">
+                    <i data-lucide="linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p data-translate="footerText">&copy; 2025 Mohamad Bashar. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/content.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/lang-toggle.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+

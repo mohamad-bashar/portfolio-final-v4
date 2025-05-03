@@ -1,0 +1,976 @@
+/* === Basic Reset & Body Styles === */
+:root {
+    /* Define base font size for easier rem scaling */
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Use Poppins font */
+    line-height: 1.7;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    padding-top: 75px; /* Adjust based on final header height */
+    cursor: none; /* Hide default cursor */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+section.section {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    opacity: 0; /* Start hidden for scroll animation */
+    transform: translateY(20px); /* Start slightly lower */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
+    line-height: 1.2;
+}
+
+/* Highlight name in H1 */
+.highlight-name {
+    color: var(--accent-color);
+    font-weight: 700; /* Ensure it stays bold */
+}
+
+h2 {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Underline effect for section titles */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* === Custom Cursor === */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference; /* Cool effect */
+    transition: opacity 0.3s ease, transform 0.1s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: white; /* Adjust color based on blend mode */
+}
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid white; /* Adjust color based on blend mode */
+    background-color: transparent;
+}
+
+/* Hide cursor on touch devices or when not supported */
+@media (hover: none) {
+    body {
+        cursor: auto; /* Show default cursor on touch */
+    }
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+}
+
+/* Cursor interaction effect */
+.cursor-interact {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.5;
+}
+
+/* === Header & Navigation === */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 5%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+header.scrolled {
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Underline hover effect for nav links */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.nav-link.active {
+    color: var(--accent-color);
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-button i {
+    width: 22px;
+    height: 22px;
+}
+
+.icon-button:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* === Hero Section === */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    min-height: calc(100vh - 75px); /* Adjust based on header height */
+    padding-top: 0;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 60%;
+}
+
+#hero-headline {
+    /* Style for typing animation cursor if needed */
+}
+
+.hero-image-container {
+    flex-basis: 35%;
+    max-width: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative; /* For pseudo-element */
+}
+
+/* Image effect - subtle border/overlay */
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--accent-color);
+    opacity: 0.3;
+    border-radius: 10px;
+    transition: opacity 0.4s ease;
+    pointer-events: none; /* Allow interaction with image */
+}
+
+.hero-image-container:hover::before {
+    opacity: 0.7;
+}
+
+.hero-image {
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.hero-image-container:hover .hero-image {
+    transform: scale(1.05);
+}
+
+/* === About Section === */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-image-container {
+    flex-basis: 40%;
+    max-width: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative; /* For pseudo-element */
+}
+
+/* Image effect - subtle border/overlay */
+.about-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--accent-color);
+    opacity: 0.3;
+    border-radius: 10px;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.about-image-container:hover::before {
+    opacity: 0.7;
+}
+
+.about-image {
+     border-radius: 10px;
+     transition: transform 0.4s ease;
+}
+
+.about-image-container:hover .about-image {
+    transform: scale(1.05);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+}
+
+/* === Skills Section === */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.skill-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card i {
+    width: 40px;
+    height: 40px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.skill-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.skill-card ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.project-info .skills-used {
+    font-style: italic;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.project-link {
+    display: inline-flex; /* Use inline-flex for icon alignment */
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border: 1px solid var(--button-border);
+    border-radius: 5px;
+    color: var(--button-text);
+    background-color: var(--button-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    align-self: flex-start; /* Align button to the start */
+}
+
+.project-link i {
+    width: 16px;
+    height: 16px;
+}
+
+.project-link:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+/* === Experience Section (Timeline Layout) === */
+.experience-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* The vertical line */
+.experience-timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: var(--accent-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+    opacity: 0.3;
+}
+
+.experience-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+/* Place items on left/right */
+.experience-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.experience-item:nth-child(even) {
+    left: 50%;
+}
+
+/* Adjust alignment for RTL */
+html[dir="rtl"] .experience-timeline::after {
+    left: auto;
+    right: 50%;
+    margin-left: 0;
+    margin-right: -1.5px;
+}
+/* Remove the potentially problematic reset rule */
+/* html[dir="rtl"] .experience-item {
+    left: auto !important; 
+    right: auto !important; 
+}*/
+html[dir="rtl"] .experience-item:nth-child(odd) {
+    /* Odd items go on the left in RTL (visually right side of the line) */
+    left: 50%;
+    right: auto; /* Explicitly set right to auto */
+    text-align: right; /* Align text away from center line */
+}
+html[dir="rtl"] .experience-item:nth-child(even) {
+    /* Even items go on the right in RTL (visually left side of the line) */
+    left: auto; /* Explicitly set left to auto */
+    right: 50%;
+    text-align: right;
+}
+
+/* Icon on the timeline */
+.experience-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: -20px;
+    background-color: var(--accent-color);
+    border: 3px solid var(--bg-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-text-color);
+}
+
+.experience-item:nth-child(even) .experience-icon {
+    left: -20px;
+}
+
+/* RTL Icon positioning */
+html[dir="rtl"] .experience-item:nth-child(odd) .experience-icon {
+    /* Odd items (left side in RTL) have icon on the right */
+    right: -20px;
+    left: auto;
+}
+html[dir="rtl"] .experience-item:nth-child(even) .experience-icon {
+    /* Even items (right side in RTL) have icon on the left */
+    left: -20px;
+    right: auto;
+}
+
+.experience-icon i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Content box */
+.experience-content {
+    padding: 20px 30px;
+    background-color: var(--card-bg);
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.experience-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+.experience-content p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* === Gratitude Section === */
+#gratitude {
+    text-align: center;
+    background-color: var(--card-bg); /* Subtle background difference */
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#gratitude h2 {
+    margin-bottom: 2rem;
+}
+
+#gratitude p {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* === Contact Section === */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: 1px solid var(--button-border);
+    border-radius: 5px;
+    color: var(--button-text);
+    background-color: var(--button-bg);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-link i {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-link:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+    transform: translateY(-3px);
+}
+
+/* === Footer === */
+footer {
+    text-align: center;
+    padding: 30px 5%;
+    margin-top: 0; /* Remove margin-top if gratitude section is present */
+    font-size: 0.9rem;
+    /* border-top: 1px solid var(--border-color); Removed as gratitude has border */
+    color: var(--text-secondary);
+}
+
+
+/* Add cursor: none to interactive elements */
+a,
+button,
+.icon-button,
+.project-link,
+.contact-link {
+    cursor: none !important; /* Force hide default cursor */
+}
+
+/* Ensure media query for touch devices restores cursor */
+@media (hover: none) {
+    body,
+    a,
+    button,
+    .icon-button,
+    .project-link,
+    .contact-link {
+        cursor: auto !important; /* Show default cursor on touch */
+    }
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+}
+
+/* Image effect - subtle border/overlay - Enhanced */
+.hero-image-container::before,
+.about-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 4px solid var(--accent-color); /* Slightly thicker border */
+    opacity: 0.2; /* Start more subtle */
+    border-radius: 10px;
+    transition: opacity 0.4s ease, border-color 0.4s ease;
+    pointer-events: none; /* Allow interaction with image */
+}
+
+.hero-image-container:hover::before,
+.about-image-container:hover::before {
+    opacity: 0.8; /* More pronounced on hover */
+}
+
+.hero-image,
+.about-image {
+    border-radius: 10px;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: grayscale(20%); /* Subtle grayscale */
+}
+
+.hero-image-container:hover .hero-image,
+.about-image-container:hover .about-image {
+    transform: scale(1.05);
+    filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+
+/* Subtle background pattern for body */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(rgba(128, 128, 128, 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(128, 128, 128, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1; /* Place behind content */
+    opacity: 0.9; /* Increased visibility */
+    pointer-events: none;
+}
+
+/* Subtle pattern for skill cards */
+.skill-card {
+    position: relative; /* Needed for pseudo-element */
+    overflow: hidden; /* Keep pattern contained */
+}
+
+.skill-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><text x="0" y="15" font-size="10" fill="rgba(128,128,128,0.05)">&lt;/&gt;</text></svg>');
+    opacity: 0.3;
+    z-index: 0; /* Behind content but above background */
+    pointer-events: none;
+}
+
+.skill-card > * { /* Ensure card content is above the pattern */
+    position: relative;
+    z-index: 1;
+}
+
+/* Refined Navigation Hover/Active Effect */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Slightly below text */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add box-shadow transition */
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    box-shadow: 0 0 8px var(--accent-color); /* Add subtle glow */
+}
+
+
+/* Hero Subheadline Style */
+.hero-subheadline {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* Highlight Name in H1 - Refined */
+.highlight-name {
+    color: var(--accent-color);
+    font-weight: 700; /* Ensure it stays bold */
+    /* Optional: Add a subtle text shadow for more pop */
+    text-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Highlight Keywords in Headline */
+.highlight-keyword {
+    color: var(--accent-color);
+    font-weight: 600; /* Slightly bolder */
+    background-color: rgba(var(--accent-color-rgb), 0.1); /* Subtle background */
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+    white-space: nowrap; /* Prevent breaking mid-highlight */
+}
+
+
+/* === Gratitude Section - Enhanced === */
+#gratitude {
+    text-align: center;
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-color) 100%); /* Subtle gradient background */
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 80px 5%; /* Increased padding */
+    position: relative; /* For potential pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+}
+
+/* Optional: Add a subtle decorative element */
+#gratitude::before {
+    content: '\2764'; /* Unicode heart symbol */
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: var(--accent-color);
+    opacity: 0.15;
+}
+
+#gratitude h2 {
+    margin-bottom: 2.5rem; /* Increased margin */
+    margin-top: 1rem; /* Space below heart */
+}
+
+#gratitude p {
+    max-width: 750px; /* Slightly wider */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem; /* Slightly larger font */
+    color: var(--text-secondary);
+    line-height: 1.9; /* Increased line height */
+}
+
+
+/* Highlight Text in About Me */
+.highlight-text {
+    font-weight: 500; /* Slightly bolder than normal text */
+    color: var(--text-color); /* Keep text color consistent */
+    background: linear-gradient(to top, rgba(var(--accent-color-rgb), 0.2) 50%, transparent 50%); /* Underline-like highlight */
+    padding: 0.05em 0.1em;
+    margin: -0.05em -0.1em; /* Adjust spacing */
+}
+
+/* Highlight Certificate Titles */
+.highlight-cert {
+    font-weight: 600;
+    color: var(--accent-color);
+    /* No background, rely on color and weight */
+}
+
+
+/* Image effect - Enhanced frame and overlay */
+.hero-image-container,
+.about-image-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative; /* Needed for pseudo-element */
+    /* flex-basis & max-width are defined elsewhere, keep them */
+}
+body.dark-theme .hero-image-container,
+body.dark-theme .about-image-container {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Adjusted shadow for dark theme */
+}
+
+.hero-image-container::before,
+.about-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--accent-color); /* Thinner border acts as frame */
+    border-radius: 10px; /* Match image border-radius */
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.15)); /* Subtle dark overlay */
+    opacity: 0.7; /* Adjust overlay opacity */
+    transition: opacity 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+    pointer-events: none;
+    z-index: 1; /* Ensure overlay is above image */
+}
+
+/* Overlay effect for dark theme */
+body.dark-theme .hero-image-container::before,
+body.dark-theme .about-image-container::before {
+    background: linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.08)); /* Subtle light overlay for dark theme */
+}
+
+.hero-image-container:hover::before,
+.about-image-container:hover::before {
+    opacity: 0.3; /* Reduce overlay opacity on hover to reveal image more */
+}
+
+.hero-image,
+.about-image {
+    border-radius: 10px; /* Redundant due to container, but safe */
+    transition: transform 0.4s ease; /* Removed filter transition */
+    display: block; /* Ensure image is block level */
+    width: 100%; /* Ensure image fills container */
+}
+
+.hero-image-container:hover .hero-image,
+.about-image-container:hover .about-image {
+    transform: scale(1.03); /* Slightly less scale */
+}
+
+
+
+
+
+
+/* Disable animation specifically for paragraph elements within sections */
+section.section p {
+    opacity: 1; /* Make paragraphs visible immediately */
+    transform: none; /* Remove initial transform */
+    transition: none; /* Disable transitions for paragraphs */
+}
+
+
+
+/* === Floating Background Icons === */
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    25% { opacity: 0.3; }
+    50% { transform: translateY(-20px) rotate(15deg); opacity: 0.5; }
+    75% { opacity: 0.3; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+}
+
+body::after { /* Using body::after for simplicity, can add more elements if needed */
+    content: "."; /* Use a simple character or SVG */
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(50px); /* Glow effect */
+    animation: float 15s infinite ease-in-out;
+}
+
+/* Example of adding more icons with variations */
+/* You would need additional elements or pseudo-elements */
+/* .floating-icon-1 {
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(40px);
+    animation: float 20s infinite ease-in-out 2s;
+}
+
+.floating-icon-2 {
+    position: fixed;
+    top: 70%;
+    left: 80%;
+    width: 80px;
+    height: 80px;
+    background-color: var(--accent-color);
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(60px);
+    animation: float 18s infinite ease-in-out 5s;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle example */
+} */
+

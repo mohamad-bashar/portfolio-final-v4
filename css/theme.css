@@ -1,0 +1,173 @@
+:root {
+    /* Light Theme (Default) */
+    --bg-color: #f8f9fa; /* Lighter gray */
+    --text-color: #212529;
+    --text-secondary: #6c757d;
+    --header-bg: rgba(248, 249, 250, 0.85); /* Slightly transparent */
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --accent-color: #0d6efd; /* Bootstrap blue */
+    --accent-text-color: #ffffff;
+    --button-bg: transparent;
+    --button-text: var(--accent-color);
+    --button-border: var(--accent-color);
+    --button-hover-bg: var(--accent-color);
+    --button-hover-text: var(--accent-text-color);
+    --cursor-dot-color: #000000;
+    --cursor-outline-color: #000000;
+}
+
+body.dark-theme {
+    /* Dark Theme */
+    --bg-color: #121212; /* Darker background */
+    --text-color: #e9ecef;
+    --text-secondary: #adb5bd;
+    --header-bg: rgba(20, 20, 20, 0.85); /* Darker transparent */
+    --card-bg: #1e1e1e; /* Slightly lighter dark */
+    --border-color: #495057;
+    --accent-color: #4dabf7; /* Lighter blue for dark mode */
+    --accent-text-color: #121212;
+    --button-bg: transparent;
+    --button-text: var(--accent-color);
+    --button-border: var(--accent-color);
+    --button-hover-bg: var(--accent-color);
+    --button-hover-text: var(--accent-text-color);
+    --cursor-dot-color: #ffffff;
+    --cursor-outline-color: #ffffff;
+}
+
+/* Apply theme variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--header-bg);
+    /* box-shadow color might need adjustment based on theme */
+}
+
+header.scrolled {
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+body.dark-theme header.scrolled {
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    color: var(--accent-color);
+}
+
+.nav-link {
+    color: var(--text-secondary);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-color);
+}
+
+.nav-link::after {
+    background-color: var(--accent-color);
+}
+
+.icon-button {
+    color: var(--text-secondary);
+}
+
+.icon-button:hover {
+    color: var(--accent-color);
+}
+
+h2::after {
+    background-color: var(--accent-color);
+}
+
+.cursor-dot {
+    background-color: var(--cursor-dot-color);
+}
+
+.cursor-outline {
+    border-color: var(--cursor-outline-color);
+}
+
+.skill-card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.skill-card i {
+    color: var(--accent-color);
+}
+
+.skill-card ul li {
+    color: var(--text-secondary);
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.project-info p {
+    color: var(--text-secondary);
+}
+
+.project-info .skills-used {
+    color: var(--accent-color);
+}
+
+.project-link {
+    color: var(--button-text);
+    border-color: var(--button-border);
+    background-color: var(--button-bg);
+}
+
+.project-link:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+.experience-timeline::after {
+    background-color: var(--accent-color);
+}
+
+.experience-icon {
+    background-color: var(--accent-color);
+    border-color: var(--bg-color);
+    color: var(--accent-text-color);
+}
+
+.experience-content {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.experience-content h3 {
+    color: var(--accent-color);
+}
+
+.experience-content p {
+    color: var(--text-secondary);
+}
+
+#contact p {
+    color: var(--text-secondary);
+}
+
+.contact-link {
+    color: var(--button-text);
+    border-color: var(--button-border);
+    background-color: var(--button-bg);
+}
+
+.contact-link:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+footer {
+    border-top-color: var(--border-color);
+    color: var(--text-secondary);
+}
+

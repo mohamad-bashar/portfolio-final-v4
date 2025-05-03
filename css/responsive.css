@@ -1,0 +1,161 @@
+/* === Responsive Design === */
+
+/* Tablets (e.g., iPads) */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+        padding: 60px 5%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        order: 2;
+    }
+
+    .hero-image-container {
+        max-width: 300px;
+        margin-bottom: 30px;
+        order: 1;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image-container {
+        max-width: 250px;
+        margin-bottom: 30px;
+    }
+
+    /* Adjust timeline for smaller screens */
+    .experience-timeline::after {
+        left: 20px; /* Move line to the left */
+        margin-left: 0;
+    }
+    html[dir="rtl"] .experience-timeline::after {
+        left: auto;
+        right: 20px;
+        margin-right: 0;
+    }
+
+    .experience-item {
+        width: 100%;
+        padding-left: 70px; /* Space for icon + line */
+        padding-right: 20px;
+        left: 0 !important; /* Override inline style */
+        text-align: left !important; /* Override inline style */
+    }
+    html[dir="rtl"] .experience-item {
+        padding-left: 20px;
+        padding-right: 70px;
+        text-align: right !important;
+    }
+
+    .experience-icon {
+        left: 0px; /* Position icon on the line */
+        top: 15px;
+    }
+    html[dir="rtl"] .experience-icon {
+        left: auto;
+        right: 0px;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    body {
+        padding-top: 65px; /* Adjust if header height changes */
+    }
+
+    header {
+        padding: 10px 5%;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        /* Implement mobile menu toggle later if needed, hide for now */
+        display: none;
+    }
+
+    .icon-button i {
+        width: 20px;
+        height: 20px;
+    }
+
+    section.section {
+        padding: 60px 5%;
+    }
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    .hero-image-container {
+        max-width: 250px;
+    }
+
+    .about-image-container {
+        max-width: 220px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack projects */
+        gap: 25px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    /* Further timeline adjustments for mobile */
+    .experience-timeline::after {
+        left: 15px;
+    }
+    html[dir="rtl"] .experience-timeline::after {
+        right: 15px;
+    }
+    .experience-item {
+        padding-left: 55px;
+        padding-right: 10px;
+    }
+    html[dir="rtl"] .experience-item {
+        padding-left: 10px;
+        padding-right: 55px;
+    }
+    .experience-icon {
+        width: 30px;
+        height: 30px;
+        left: 0px;
+        border-width: 2px;
+    }
+    html[dir="rtl"] .experience-icon {
+        right: 0px;
+    }
+    .experience-icon i {
+        width: 16px;
+        height: 16px;
+    }
+    .experience-content {
+        padding: 15px 20px;
+    }
+}
+
