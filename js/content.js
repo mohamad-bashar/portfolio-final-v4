@@ -65,7 +65,11 @@ const siteContent = {
         "contactSubtext": "Interested in collaborating or have any questions? Feel free to reach out!",
         "contactEmailLink": "Your Email Address",
         "contactGithubLink": "GitHub Profile",
-        "footerText": "© 2025 Mohamad Bashar. All rights reserved."
+        "footerText": "© 2025 Mohamad Bashar. All rights reserved.",
+        "showCertificateLink": "Show Certificate",
+        "downloadCertificateButton": "Download Certificate",
+        "certificateModalTitleDefault": "Certificate Preview",
+        "closeModalButtonTitle": "Close modal"
     },
     "ar": {
         "pageTitle": "محمد بشار - ملف شخصي",
@@ -133,7 +137,11 @@ const siteContent = {
         "contactSubtext": "هل أنت مهتم بالتعاون أو لديك أي أسئلة؟ لا تتردد في التواصل!",
         "contactEmailLink": "عنوان بريدك الإلكتروني",
         "contactGithubLink": "ملف GitHub الشخصي",
-        "footerText": "© 2025 محمد بشار. جميع الحقوق محفوظة."
+        "footerText": "© 2025 محمد بشار. جميع الحقوق محفوظة.",
+        "showCertificateLink": "عرض الشهادة",
+        "downloadCertificateButton": "تحميل الشهادة",
+        "certificateModalTitleDefault": "معاينة الشهادة",
+        "closeModalButtonTitle": "إغلاق النافذة"
     }
 };
 

@@ -118,9 +118,6 @@ h2::after {
 
 /* Hide cursor on touch devices or when not supported */
 @media (hover: none) {
-    body {
-        cursor: auto; /* Show default cursor on touch */
-    }
     .cursor-dot,
     .cursor-outline {
         display: none;
@@ -452,122 +449,227 @@ nav {
 /* === Experience Section (Timeline Layout) === */
 .experience-timeline {
     position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-/* The vertical line */
-.experience-timeline::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    background-color: var(--accent-color);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1.5px;
-    opacity: 0.3;
+    margin-top: 2rem;
 }
 
 .experience-item {
-    padding: 10px 40px;
+    display: flex;
+    margin-bottom: 3rem; /* Slightly more space between items */
     position: relative;
-    background-color: inherit;
-    width: 50%;
+    padding-left: 60px; /* Increased space for a more pronounced timeline lane */
 }
 
-/* Place items on left/right */
-.experience-item:nth-child(odd) {
-    left: 0;
-    text-align: right;
+.experience-item:before { /* The timeline vertical bar */
+    content: '';
+    position: absolute;
+    left: 29px; 
+    top: 0;
+    bottom: 0; 
+    width: 2px;
+    background-color: var(--accent-color);
+    z-index: 0; /* Behind icon */
 }
 
-.experience-item:nth-child(even) {
-    left: 50%;
+.experience-item:first-child::before {
+    top: 25px; /* Start line from roughly icon center for the first item (icon top 25px + 0 height offset) */
 }
 
-/* Adjust alignment for RTL */
-html[dir="rtl"] .experience-timeline::after {
-    left: auto;
-    right: 50%;
-    margin-left: 0;
-    margin-right: -1.5px;
-}
-/* Remove the potentially problematic reset rule */
-/* html[dir="rtl"] .experience-item {
-    left: auto !important; 
-    right: auto !important; 
-}*/
-html[dir="rtl"] .experience-item:nth-child(odd) {
-    /* Odd items go on the left in RTL (visually right side of the line) */
-    left: 50%;
-    right: auto; /* Explicitly set right to auto */
-    text-align: right; /* Align text away from center line */
-}
-html[dir="rtl"] .experience-item:nth-child(even) {
-    /* Even items go on the right in RTL (visually left side of the line) */
-    left: auto; /* Explicitly set left to auto */
-    right: 50%;
-    text-align: right;
+.experience-item:last-child::before {
+    bottom: auto; /* Stop line effectively at the icon's start for the last item */
+    height: 25px; /* End line at icon's top position or center */
 }
 
-/* Icon on the timeline */
 .experience-icon {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    right: -20px;
+    left: 15px;  /* (60px lane - 30px icon_width) / 2 = 15px */
+    top: 25px;   /* Vertically align icon; adjust this to position relative to title. Start with 25px. */
+    width: 30px; /* Increased icon size */
+    height: 30px;/* Increased icon size */
     background-color: var(--accent-color);
-    border: 3px solid var(--bg-color);
-    top: 15px;
+    color: var(--bg-color); 
     border-radius: 50%;
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--accent-text-color);
+    z-index: 1; /* Icon above the line */
+    border: 3px solid var(--card-bg); /* Creates a border, making icon pop from the line, using card-bg for contrast */
 }
 
-.experience-item:nth-child(even) .experience-icon {
-    left: -20px;
+.experience-icon i { /* Lucide icon inside */
+    width: 16px; /* Adjusted for new icon size */
+    height: 16px;/* Adjusted for new icon size */
 }
 
-/* RTL Icon positioning */
-html[dir="rtl"] .experience-item:nth-child(odd) .experience-icon {
-    /* Odd items (left side in RTL) have icon on the right */
-    right: -20px;
-    left: auto;
-}
-html[dir="rtl"] .experience-item:nth-child(even) .experience-icon {
-    /* Even items (right side in RTL) have icon on the left */
-    left: -20px;
-    right: auto;
-}
-
-.experience-icon i {
-    width: 20px;
-    height: 20px;
-}
-
-/* Content box */
 .experience-content {
-    padding: 20px 30px;
     background-color: var(--card-bg);
-    position: relative;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    flex-grow: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
 }
 
 .experience-content h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
 }
 
 .experience-content p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+    margin-bottom: 0.5rem; /* Adjusted for tighter spacing before button */
+    line-height: 1.6;
+}
+
+.show-certificate-btn {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0.25rem 0 0 0; /* Adjusted padding */
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 0.75rem; /* Increased spacing from paragraph */
+    transition: color 0.2s ease;
+}
+
+.show-certificate-btn:hover,
+.show-certificate-btn:focus {
+    color: var(--primary-color);
+    outline: none;
+}
+
+/* Certificate Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 20px 25px 25px 25px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+    max-height: calc(100vh - 40px); /* Ensure modal fits viewport with padding */
+    display: flex;
+    flex-direction: column;
+    animation: fadeInModal 0.3s ease-out;
+    overflow: hidden; /* Overall content overflow is hidden */
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translateY(-20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-color-muted);
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 4px; /* Reduced padding for a more compact X icon */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    z-index: 10; 
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: var(--primary-color);
+    transform: scale(1.1);
+    outline: none;
+}
+
+.modal-close-btn i {
+    display: block;
+}
+
+.modal-content h3#modal-certificate-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 1.3rem; /* Slightly smaller title */
+    padding-right: 30px; /* Ensure space for close button not to overlap */
+    padding-left: 30px; /* Balance padding */
+    line-height: 1.3;
+}
+
+.modal-image-container {
+    width: 100%;
+    flex-grow: 1; /* Allow it to take available vertical space */
+    overflow-y: auto; /* Scroll for tall images */
+    margin-bottom: 15px;
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+    min-height: 200px; /* Provide a minimum height */
+    display: flex; /* For centering placeholder if any */
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-cert-image {
+    width: 100%;
+    height: auto;
+    max-height: 100%; /* Ensure image doesn't overflow its container */
+    display: block;
+    border-radius: var(--border-radius-md);
+    object-fit: contain; /* Scales image while preserving aspect ratio */
+}
+
+#modal-download-link.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 0 auto;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+#modal-download-link.button i {
+    margin-right: 8px;
+}
+
+#modal-download-link.button:hover,
+#modal-download-link.button:focus {
+    background-color: var(--accent-color); /* Base color */
+    filter: brightness(90%); /* Darken the base accent color slightly */
+    color: #ffffff; /* Ensure text remains white and clear */
+    transform: translateY(-2px) scale(1.02); /* Add slight scale for more pop */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Enhanced shadow for depth */
+    opacity: 1 !important; /* Ensure full opacity, overriding any parent fade */
+    outline: none;
 }
 
 /* === Gratitude Section === */
@@ -972,5 +1074,3 @@ body::after { /* Using body::after for simplicity, can add more elements if need
     filter: blur(60px);
     animation: float 18s infinite ease-in-out 5s;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle example */
-} */
-
